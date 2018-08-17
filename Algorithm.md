@@ -3,7 +3,7 @@
 ### Specifications of Game
 - There is only one correct path
 - Available operators, number of moves, and starting numbers change with each new game
-- Let $f(m,n) = n^{m+1}$ be the number of possible paths of operations
+- $f(m,n) = n^{m}$ is the number of possible paths of operations
 
 ### Overarching Ideas
 - Bruteforce operations
@@ -11,7 +11,7 @@
 - Operators need to be well defined, they are not *typical* math operators
     - Multiplication *Ex: 3x meaning 3 * current number*
     - Remove digit *Ex: << meaning truncate the last digit of the current number*
-    - Insert digit *Ex: 5 meaning add 5 to the end of the current number*
+    - Insert digit *Ex: 5 meaning append 5 to the end of the current number*
 
 ### Algorithm Steps
 - Let *m* be the max number of moves
