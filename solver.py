@@ -9,17 +9,19 @@ Created on Fri Aug 17 12:47:44 2018
 Works for problem #50 on Calculator Game for Android.
 """
 
+# TODO: Make dynamic input instead of hardcoded.
+
 def op1(num):
-    return num * 3
+    return num - 5
 
 def op2(num):
-    return num - 9
+    return num + 8
 
 def op3(num):
     return num * -1
 
 def op4(num):
-    return num // 10
+    return num / 7
 
 def test_path(f, x):
     y = x
@@ -28,16 +30,16 @@ def test_path(f, x):
     print(y)
     return y
 
-m = 6
+m = 5
 n = 4
 o = [op1, op2, op3, op4]
-g = 126
-x = 111
+g = 3
+x = 34
 y = None
 p = []
 
-current = [0, 0, 0, 0, 0, 0]
-
+current = [0, 0, 0, 0, 0]
+'''
 while current[0] < n:
     while current[1] < n:
         while current[2] < n:
@@ -66,6 +68,31 @@ while current[0] < n:
     current[3] = 0
     current[4] = 0
     current[5] = 0
+'''
+
+
+while current[0] < n:
+    while current[1] < n:
+        while current[2] < n:
+            while current[3] < n:
+                while current[4] < n:
+                    p.append(current.copy())
+                    current[4] = current[4] + 1
+                current[3] = current[3] + 1
+                current[4] = 0
+            current[2] = current[2] + 1
+            current[3] = 0
+            current[4] = 0
+        current[1] = current[1] + 1
+        current[2] = 0
+        current[3] = 0
+        current[4] = 0
+    current[0] = current[0] + 1
+    current[1] = 0
+    current[2] = 0
+    current[3] = 0
+    current[4] = 0
+
 
 print(print(len(p), 'paths generated total'))
 
