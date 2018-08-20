@@ -3,6 +3,7 @@
 ### Specifications of Game
 - There is only one correct path
 - Available operators, number of moves, and starting numbers change with each new game
+- Not every operator is needed in each game
 - $f(m,n) = n^{m}$ is the number of possible paths of operations
 
 ### Overarching Ideas
