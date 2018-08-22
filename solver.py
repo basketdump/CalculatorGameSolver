@@ -1,10 +1,13 @@
 def reverse(o1):
     '''This function reverses an integer and returns it'''
     result = ''
-    while o1 > 0:
-        result += o1 // 10
-        o1 = o1 // 10
-    return int(result)
+    if o1 == 0:
+        return 0
+    else:
+        while o1 > 0:
+            result += str(o1 % 10)
+            o1 = o1 // 10
+        return int(result)
 
 def test_path(f, x):
     '''This function interprets and evaluates an operation'''
@@ -29,11 +32,11 @@ def test_path(f, x):
 
 # Setup variables
 m = int(input("# of Moves: "))
+g = int(input("Goal: "))
+x = int(input("Starting Number: "))
 n = int(input("# of Operators: "))
 # o = [op1, op2, op3, op4]
 o = []
-g = int(input("Goal: "))
-x = int(input("Starting Number: "))
 y = None
 p = []
 l = m - 1
@@ -52,18 +55,17 @@ for i in range(n):
 
 # Generate paths
 while current[0] < n:
-    if l == m - 1 and current[l] < n:
-        p.append(current.copy())
-        print(current)
-        current[l] = current[l] + 1
-    else:
-        print(n)
-        for i in range(m):
-            if current[i + 1] >= n:
-                current[i] = current[i] + 1
-                for j in range(i + 1, m):
-                    current[j] = 0
-                break
+    # print(p)
+    p.append(current.copy())
+    ptr = m - 1
+    current[ptr] = current[ptr] + 1
+    while (current[ptr] >= n):
+        if (ptr > 0):
+            current[ptr] = 0
+            current[ptr - 1] = current[ptr-1] + 1
+        else:
+            break
+        ptr = ptr - 1
             
 
 
