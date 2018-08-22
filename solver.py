@@ -1,32 +1,44 @@
-def op1(num):
-    return num - 5
-
-def op2(num):
-    return num + 8
-
-def op3(num):
-    return num * -1
-
-def op4(num):
-    return num / 7
+def reverse(o1):
+    result = ''
+    while o1 > 0:
+        result += o1 // 10
+        o1 = o1 // 10
+    return int(result)
 
 def test_path(f, x):
     y = x
     for i in range(len(f)):
-        y = o[f[i]](y)
+        if o[f[i]][0] == '+':
+            y = y + int(o[f[i]][1])
+        elif o[f[i]][0] == '*':
+            y = y * int(o[f[i]][1])
+        elif o[f[i]][0] == '-':
+            y = y - int(o[f[i]][1])
+        elif o[f[i]][0] == '/':
+            y = y / int(o[f[i]][1])
+        elif o[f[i]][0] == 'f':
+            y = y * -1
+        elif o[f[i]][0] == 'r':
+            y = reverse(y)
     print(y)
     return y
 
 m = 5
-n = 4
-o = [op1, op2, op3, op4]
-g = 3
-x = 34
-y = None
+n = 5
+# o = [op1, op2, op3, op4]
+o = []
+g = 4
+x = 25
+y = None # + 5 / 4 * 3 f + 1
 p = []
 l = m - 1
 
+
 current = [0, 0, 0, 0, 0]
+
+for i in range(n):
+    operator = input("Operator: ")
+    o.append(operator.split())
 
 while l >= 0 and current[l] < n:
     if current[l] < n:
@@ -36,7 +48,7 @@ while l >= 0 and current[l] < n:
         for i in range(m):
             if (l + i) < m:
                 current[l + i]
-
+'''
 while current[0] < n:
     while current[1] < n:
         while current[2] < n:
@@ -58,8 +70,7 @@ while current[0] < n:
     current[2] = 0
     current[3] = 0
     current[4] = 0
-
-
+'''
 print(print(len(p), 'paths generated total'))
 
 for i in range(len(p)):
