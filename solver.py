@@ -18,7 +18,7 @@ def generate_paths(length, height):
         while (current[ptr] >= height):
             if (ptr > 0):
                 current[ptr] = 0
-                current[ptr - 1] = current[ptr-1] + 1
+                current[ptr-1] = current[ptr-1] + 1
             else:
                 break
             ptr = ptr - 1
@@ -43,7 +43,7 @@ def reverse(o1):
     o1 = str(o1)
     result = ''
     for i in range(len(o1)):
-        result = result + o1[len(o1) - (i + 1)]
+        result = result + o1[len(o1)-(i+1)]
     
     # Return number back to float also negative if need be
     result = float(result)
@@ -126,4 +126,5 @@ def main():
             print(paths[i], 'is the correct path')
             break
 
-main()
+while True:
+    main()
