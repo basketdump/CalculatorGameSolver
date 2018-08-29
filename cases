@@ -1,0 +1,37 @@
+whole float
+    - positive
+    - negative
+
+reg float
+    - positive
+    - negative
+
+int
+    - positive
+    - negative
+    - zero
+
+
+shift:
+
+15.0
+<
+
+bad: 15.
+good: 1.0
+
+-15.0
+<
+
+bad: -15.
+good: -1.0
+
+1.7
+<
+good: 1.
+
+-1.7
+<
+good: -1.
+
+if int then int(num) // 10 else str(num)[:-1]
