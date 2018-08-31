@@ -71,6 +71,17 @@ def left_shift(o1):
         # -17.1 returns as -17.0 (-17. == -17.0)
         return float(str(o1)[:-1])
 
+def convert(o1, o2, o3):
+    '''This function converts/replaces each instance of o2 in o1 to/with o3 and returns the result'''
+    # EX: convert(12345, 23, 99) will return 19945
+    if (o1.is_integer()):
+        o1 = int(o1)
+    
+    o1 = str(o1)
+    o1 = o1.replace(str(o2), str(o3))
+    
+    return float(o1)
+    
 
 def test_path(operations, f, x):
     '''This function interprets and evaluates an operation'''
@@ -81,25 +92,29 @@ def test_path(operations, f, x):
         # Some operators unary operators, so we need to see
         # if that's the case before trying to access an operand
         # that doesn't exist
-        if (len(operations[f[i]]) == 2):
-            operand = float(operations[f[i]][1])
-        # operand = float(o[f[i]][1])
+        operands = []
+        if (len(operations[f[i]]) > 1):
+            for j in range(1, len(operations[f[i]])):
+                operands.append(int(operations[f[i]][j]))
+            
         if operator == '+':
-            y = y + operand
+            y = y + operands[0]
         elif operator == '*':
-            y = y * operand
+            y = y * operands[0]
         elif operator == '-':
-            y = y - operand
+            y = y - operands[0]
         elif operator == '/':
-            y = y / operand
+            y = y / operands[0]
         elif operator == 'i':
-            y = insert(y, operand)
+            y = insert(y, operands[0])
         elif operator == 'f':
             y = y * -1
         elif operator == 'r':
             y = reverse(y)
         elif operator == '<':
             y = left_shift(y)
+        elif operator == 'c':
+            y = convert(y, operands[0], operands[1])
     return y
 
 def main():
