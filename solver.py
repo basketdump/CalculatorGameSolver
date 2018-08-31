@@ -82,6 +82,14 @@ def convert(o1, o2, o3):
     
     return float(o1)
     
+def sum_digits(o1):
+    '''This function sums all of the digits in o1 and returns the result'''
+    o1 = str(o1)
+    result = 0.0
+    for c in o1:
+        if (c != '.'):
+            result = result + int(c)
+    return result
 
 def test_path(operations, f, x):
     '''This function interprets and evaluates an operation'''
@@ -115,6 +123,8 @@ def test_path(operations, f, x):
             y = left_shift(y)
         elif operator == 'c':
             y = convert(y, operands[0], operands[1])
+        elif operator == 's':
+            y = sum_digits(y)
     return y
 
 def main():
