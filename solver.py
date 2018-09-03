@@ -148,6 +148,8 @@ def main():
 
     for i in range(len(paths)):
         if test_path(operations, paths[i], float(start)) == goal:
+            for j in range(len(paths[i])):
+                print(operations[paths[i][j]], end=' ')
             print(paths[i], 'is the correct path')
             break
 
