@@ -87,8 +87,10 @@ def sum_digits(o1):
     o1 = str(o1)
     result = 0.0
     for c in o1:
-        if (c != '.'):
+        if (c not in ('.', '-')):
             result = result + int(c)
+    if o1[0] == '-':
+        result *= -1;
     return result
 
 def test_path(operations, f, x):
@@ -148,8 +150,13 @@ def main():
 
     for i in range(len(paths)):
         if test_path(operations, paths[i], float(start)) == goal:
+            print("( ", end="")
             for j in range(len(paths[i])):
-                print(operations[paths[i][j]], end=' ')
+                for operation in operations[paths[i][j]]:
+                    print(operation, end='')
+                # print(operations[paths[i][j]], end=' ')
+                print(end=" ")
+            print(")")
             print(paths[i], 'is the correct path')
             break
 
